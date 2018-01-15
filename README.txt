@@ -4,7 +4,7 @@ All you need to do is setup environment variable BLUE_SKY_WINDEPS that points to
 NOTE: because of huge size, Boost headers are NOT included. You need to place 'em into `boost/boost` directory by yourself.
 
 Includes following components.
-Boost: 1.65
+Boost: 1.66
 CGAL: 4.9.1
 curl: 88220adb72c5cb00e3c8d0886ebe687edf842cd8
 HDF5: 1.10.1
