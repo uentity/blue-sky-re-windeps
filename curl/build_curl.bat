@@ -33,8 +33,8 @@ if errorlevel 1 goto fail
 set out_dir=%~dp0\..\builds\libcurl-vc-x64-debug-dll-ssl-dll-ipv6-sspi
 set target_dir=%BLUE_SKY_WINDEPS%\curl\debug\lib64
 del /q %target_dir%\* >> %log_path% 2>&1
-copy /Y %out_dir%\lib\libcurl_debug.lib %target_dir%\libcurl.lib
-copy /Y %out_dir%\bin\libcurl_debug.dll %target_dir%\libcurl.dll
+copy /Y %out_dir%\lib\libcurl.lib %target_dir%\libcurl.lib
+copy /Y %out_dir%\bin\libcurl.dll %target_dir%\libcurl.dll
 echo "Success"
 
 call %vcvars_path% x86 >> %log_path% 2>&1
@@ -55,8 +55,8 @@ if errorlevel 1 goto fail
 set out_dir=%~dp0\..\builds\libcurl-vc-x86-debug-dll-ssl-dll-ipv6-sspi
 set target_dir=%BLUE_SKY_WINDEPS%\curl\debug\lib
 del /q %target_dir%\* >> %log_path% 2>&1
-copy /Y %out_dir%\lib\libcurl_debug.lib %target_dir%\libcurl.lib
-copy /Y %out_dir%\bin\libcurl_debug.dll %target_dir%\libcurl.dll
+copy /Y %out_dir%\lib\libcurl.lib %target_dir%\libcurl.lib
+copy /Y %out_dir%\bin\libcurl.dll %target_dir%\libcurl.dll
 echo "Success"
 
 exit /B
