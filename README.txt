@@ -11,4 +11,4 @@ HDF5: 1.10.1
 loki: 0.1.7
 OpenSSL: 1.1.1
 tbb: 2017_20170226oss
-CAF: 0.16.0 with fixes for Windows
+CAF: 0.16.2 with fixes for Windows
