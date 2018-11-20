@@ -13,3 +13,4 @@ OpenSSL: 1.1.1
 tbb: 2017_20170226oss
 CAF: 0.16.2 with fixes for Windows
 Windows CRT: 10.0.17763.0
+MSVC libs: 15.9.1
