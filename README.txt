@@ -7,7 +7,7 @@ Includes following components.
 Boost: 1.68
 CGAL: 4.9.1
 curl: 1.61.1 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundeled OpenSSL)
-HDF5: 1.10.1
+HDF5: 1.10.4
 loki: 0.1.7
 OpenSSL: 1.1.1
 tbb: 2017_20170226oss

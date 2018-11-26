@@ -1,6 +1,6 @@
 /*
- * This files has neccesary definitions to provide SZIP DLL 
- * support on Windows platfroms, both MSVC and CodeWarrior 
+ * This files has neccesary definitions to provide SZIP DLL
+ * support on Windows platfroms, both MSVC and CodeWarrior
  * compilers
  */
 
@@ -16,12 +16,16 @@
     #define __SZ_DLL__ __declspec(dllexport)
   #elif (__GNUC__ >= 4)  /* GCC 4.x has support for visibility options */
     #define __SZ_DLL__ __attribute__ ((visibility("default")))
+  #else
+    #define __SZ_DLL__
   #endif
 #else
   #if defined (_MSC_VER)  /* MSVC Compiler Case */
     #define __SZ_DLL__ __declspec(dllimport)
   #elif (__GNUC__ >= 4)  /* GCC 4.x has support for visibility options */
     #define __SZ_DLL__ __attribute__ ((visibility("default")))
+  #else
+    #define __SZ_DLL__
   #endif
 #endif
 
