@@ -13,6 +13,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 //
 //
 // Author(s)     : Andreas Fabri
@@ -20,13 +21,16 @@
 #ifndef CGAL_BGL_DUAL_H
 #define CGAL_BGL_DUAL_H
 
+#include <CGAL/disable_warnings.h>
+
 #include <CGAL/boost/graph/properties.h>
 #include <boost/range/distance.hpp>
+#include <CGAL/boost/graph/iterator.h>
 
 namespace CGAL {
 
 /*!
-\ingroup PkgBGLHelper
+\ingroup PkgBGLAdaptors
 
 The class template `Dual` is an adaptor that creates the dual view of
 a `FaceGraph`. Faces of the original graph correspond to vertices in
@@ -47,6 +51,11 @@ faces and vertices only the `face_index` and `vertex_index` properties
 are forwarded. Accessing other properties will lead to a compilation
 error.
 \cgalAdvancedEnd
+
+\tparam Primal_ must be a model of `FaceGraph`
+
+\cgalModels `FaceGraph`
+
 */
 template <typename Primal_>
 class Dual
@@ -78,12 +87,15 @@ Dual<Primal> dual(const Primal& primal)
 } // namespace CGAL
 
 namespace boost {
-  
+  /*!
+\ingroup PkgBGLTraits
+
+  */
 template <typename Primal>
 class graph_traits<CGAL::Dual<Primal> >
 {
-  typedef boost::graph_traits<Primal> GTP;
 public:
+  typedef boost::graph_traits<Primal> GTP;
   typedef typename GTP::face_descriptor     vertex_descriptor;
   typedef typename GTP::vertex_descriptor   face_descriptor;
   typedef typename GTP::halfedge_descriptor halfedge_descriptor;
@@ -477,5 +489,7 @@ in_degree(typename boost::graph_traits<Dual<P> >::vertex_descriptor v,
          
         
 } // namespace CGAL
+
+#include <CGAL/enable_warnings.h>
 
 #endif

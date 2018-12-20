@@ -14,6 +14,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 // 
 //
 // Author(s)     : Mariette Yvinec
@@ -22,9 +23,18 @@
 #ifndef CGAL_WEIGHTED_POINT_H
 #define CGAL_WEIGHTED_POINT_H
 
-#include <iostream>
+#include <CGAL/license/Triangulation_2.h>
+
+#define CGAL_DEPRECATED_HEADER "<CGAL/Weighted_point.h>"
+#define CGAL_DEPRECATED_MESSAGE_DETAILS \
+   "Weighted points are now part of the concept Kernel. One should therefore "\
+   "use `CGAL::Weighted_point_2<K>` and `CGAL::Weighted_point_3<K>`."
+#include <CGAL/internal/deprecation_warning.h>
+
 #include <CGAL/Kernel_traits.h>
 #include <CGAL/Dimension.h>
+#include <CGAL/IO/io.h>
+#include <iostream>
 #include <boost/utility/enable_if.hpp>
 #include <boost/type_traits/is_convertible.hpp>
 #include <boost/mpl/and.hpp>

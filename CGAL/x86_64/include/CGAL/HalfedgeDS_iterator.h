@@ -18,13 +18,16 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 // 
 //
 // Author(s)     : Lutz Kettner  <kettner@mpi-sb.mpg.de>)
 
 #ifndef CGAL_HALFEDGEDS_ITERATOR_H
 #define CGAL_HALFEDGEDS_ITERATOR_H 1
+
 #include <CGAL/circulator.h>
+#include <CGAL/tags.h>
 #include <CGAL/use.h>
 
 namespace CGAL {

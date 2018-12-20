@@ -14,6 +14,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 //
 //
 // Author(s)     : Stephane Tayeb
@@ -24,6 +25,9 @@
 
 #ifndef CGAL_MESH_3_ROBUST_INTERSECTION_TRAITS_3_H
 #define CGAL_MESH_3_ROBUST_INTERSECTION_TRAITS_3_H
+
+#include <CGAL/license/Mesh_3.h>
+
 
 #include <CGAL/Mesh_3/config.h>
 
@@ -391,7 +395,8 @@ ts_intersection(const typename K::Triangle_3 &t,
 #else
           return make_object(p);
 #endif
-        }
+        } else
+          return result_type();
       case NEGATIVE:
         // q sees the triangle in clockwise order
         if(orientation(p,q,a,b) != POSITIVE
@@ -403,7 +408,8 @@ ts_intersection(const typename K::Triangle_3 &t,
 #else
           return make_object(p);
 #endif
-        }
+        } else
+          return result_type();
       case COPLANAR:
         // the segment is coplanar with the triangle's supporting plane
         // we test whether the segment intersects the triangle in the common

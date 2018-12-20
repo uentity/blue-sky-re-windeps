@@ -1,10 +1,10 @@
 // Copyright (c) 2003,2004  INRIA Sophia-Antipolis (France).
 // All rights reserved.
 //
-// This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
+// This file is part of CGAL (www.cgal.org); you can redistribute it and/or
+// modify it under the terms of the GNU Lesser General Public License as
+// published by the Free Software Foundation; either version 3 of the License,
+// or (at your option) any later version.
 //
 // Licensees holding a valid commercial license may use this file in
 // accordance with the commercial license agreement provided with the software.
@@ -14,12 +14,10 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 // 
 //
 // Author(s)     : Menelaos Karavelas <mkaravel@iacm.forth.gr>
-
-
-
 
 #ifndef CGAL_FILTERED_CONSTRUCTION_H
 #define CGAL_FILTERED_CONSTRUCTION_H
@@ -61,7 +59,7 @@ public:
     {
       return From_Filtered( Filter_construction(To_Filtered(a1)) );
     }
-    catch (Uncertain_conversion_exception)
+    catch (Uncertain_conversion_exception&)
     {
       Protect_FPU_rounding<!Protection> P(CGAL_FE_TONEAREST);
       return From_Exact( Exact_construction(To_Exact(a1)) );
@@ -77,7 +75,7 @@ public:
       return From_Filtered( Filter_construction(To_Filtered(a1),
 						To_Filtered(a2)) );
     }
-    catch (Uncertain_conversion_exception)
+    catch (Uncertain_conversion_exception&)
     {
       Protect_FPU_rounding<!Protection> P(CGAL_FE_TONEAREST);
       return From_Exact( Exact_construction(To_Exact(a1),
@@ -96,7 +94,7 @@ public:
 						To_Filtered(a2),
 						To_Filtered(a3)) );
     }
-    catch (Uncertain_conversion_exception)
+    catch (Uncertain_conversion_exception&)
     {
       Protect_FPU_rounding<!Protection> P(CGAL_FE_TONEAREST);
       return From_Exact( Exact_construction(To_Exact(a1),

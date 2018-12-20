@@ -14,13 +14,16 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 //
 // Author(s)     : Frank Da, David Cohen-Steiner, Andreas Fabri
 
 #ifndef CGAL_ADVANCING_FRONT_SURFACE_RECONSTRUCTION_CELL_BASE_3_H
 #define CGAL_ADVANCING_FRONT_SURFACE_RECONSTRUCTION_CELL_BASE_3_H
 
-#include <CGAL/Triangulation_cell_base_3.h>
+#include <CGAL/license/Advancing_front_surface_reconstruction.h>
+
+#include <CGAL/Delaunay_triangulation_cell_base_3.h>
 
 namespace CGAL {
 
@@ -32,9 +35,9 @@ namespace CGAL {
 
   \tparam Traits has to be a model of `DelaunayTriangulationTraits_3`.
 
-  \tparam Cb has to be a model of `TriangulationCellBase_3`.
+  \tparam Cb has to be a model of `DelaunayTriangulationCellBase_3`.
   */
-  template < typename Traits, typename Cb = Triangulation_cell_base_3<Traits> >
+  template < typename Traits, typename Cb = Delaunay_triangulation_cell_base_3<Traits> >
   class Advancing_front_surface_reconstruction_cell_base_3 : public Cb
   {
 

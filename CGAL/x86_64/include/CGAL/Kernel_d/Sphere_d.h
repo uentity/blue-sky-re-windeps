@@ -18,6 +18,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 // 
 //
 // Author(s)     : Michael Seel
@@ -29,6 +30,10 @@
 #include <vector>
 #include <CGAL/Dimension.h>
 #include <CGAL/use.h>
+#include <CGAL/Handle.h>
+#include <CGAL/Kernel_d/Tuple_d.h>
+#include <CGAL/Kernel_d/Aff_transformation_d.h>
+#include <CGAL/Kernel_d/Vector_d.h>
 
 namespace CGAL {
 

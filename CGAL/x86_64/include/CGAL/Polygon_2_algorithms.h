@@ -18,6 +18,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 // 
 //
 // Author(s)     : Wieger Wesselink <wieger@cs.ruu.nl>
@@ -29,7 +30,7 @@
 #ifndef CGAL_POLYGON_2_ALGORITHMS_H
 #define CGAL_POLYGON_2_ALGORITHMS_H
 
-#include <CGAL/basic.h>
+#include <CGAL/config.h>
 #include <CGAL/enum.h>
 #include <CGAL/Bbox_2.h>
 #include <CGAL/Polygon_2/polygon_assertions.h>

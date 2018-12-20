@@ -18,6 +18,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 // 
 //
 // Author(s)     : Michael Hoffmann <hoffmann@inf.ethz.ch>
@@ -31,8 +32,8 @@
 #include <algorithm>
 #include <numeric>
 #include <CGAL/Random_convex_set_traits_2.h>
-#include <CGAL/centroid.h>
 #include <boost/functional.hpp>
+#include <boost/foreach.hpp>
 
 namespace CGAL {
 
@@ -75,7 +76,14 @@ random_convex_set_2( std::size_t n,
   CGAL::cpp11::copy_n( pg, n, back_inserter( points));
 
   // compute centroid of points:
-  Point_2 centroid = CGAL::centroid( points.begin(), points.end(), t );
+  // Point_2 centroid = CGAL::centroid( points.begin(), points.end(), t );
+
+  Point_2 centroid = t.origin();
+
+  BOOST_FOREACH(const Point_2& p, points){
+    centroid = sum(centroid, p);
+  }
+  centroid = scale(centroid, FT(1)/FT(n));
 
   // translate s.t. centroid == origin:
   transform(
@@ -93,8 +101,12 @@ random_convex_set_2( std::size_t n,
     points.begin(), points.end(), points.begin(), Sum());
 
   // and compute its centroid:
-  Point_2 new_centroid = CGAL::centroid( points.begin(), points.end(), t );
+  Point_2 new_centroid = t.origin();
 
+  BOOST_FOREACH(const Point_2& p, points){
+    new_centroid = sum(new_centroid, p);
+  }
+  new_centroid = scale(new_centroid, FT(1)/FT(n));
   // translate s.t. centroids match:
   transform(
     points.begin(),

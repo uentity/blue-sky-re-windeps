@@ -13,6 +13,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 //
 //
 // Author(s)     : Andreas Fabri, Fernando Cacciola
@@ -27,7 +28,7 @@
 
 #include <boost/config.hpp>
 #include <boost/iterator/iterator_adaptor.hpp>
-#include <boost/iterator/transform_iterator.hpp>
+#include <CGAL/boost/iterator/transform_iterator.hpp>
 #include <boost/type_traits/remove_const.hpp>
 
 #include <boost/graph/graph_traits.hpp>
@@ -36,6 +37,7 @@
 #include <CGAL/basic.h>
 #include <CGAL/boost/graph/iterator.h>
 #include <CGAL/Handle_hash_function.h>
+#include <CGAL/iterator.h>
 
 #ifndef CGAL_NO_DEPRECATED_CODE
 #include <CGAL/boost/graph/halfedge_graph_traits.h>
@@ -44,29 +46,6 @@
 namespace CGAL {
 
 namespace internal {
-
-template<typename I>
-class Prevent_deref
-  : public boost::iterator_adaptor<
-  Prevent_deref<I>
-  , I // base
-  , I // value
-  >
-{
-public:
-  typedef boost::iterator_adaptor<
-  Prevent_deref<I>
-  , I // base
-  , I // value
-  > Base;
-  //  typedef typename Prevent_deref::iterator_adaptor_::reference reference;
-  typedef typename Base::reference reference;
-  Prevent_deref() : Base() {};
-  Prevent_deref(const I& i) : Base(i) {};
-private:
-  friend class boost::iterator_core_access;
-  reference dereference() const { return const_cast<typename boost::remove_reference<reference>::type&>(this->base_reference()); }
-};
 
 // a HDS_halfedge pretending to be an Edge
 template<typename Halfedge_handle>
@@ -194,11 +173,10 @@ public:
   typedef typename HDS::Face_handle                                  face_descriptor;
   typedef typename HDS::Halfedge_handle                              halfedge_descriptor;
 
-  typedef internal::Prevent_deref<typename HDS::Vertex_iterator>     vertex_iterator;
-  typedef internal::Prevent_deref<typename HDS::Face_iterator>       face_iterator;
-  typedef internal::Prevent_deref<typename HDS::Edge_iterator>       edge_iterator_i;
-  typedef internal::Prevent_deref<typename HDS::Halfedge_iterator>   halfedge_iterator;
-
+  typedef CGAL::Prevent_deref<typename HDS::Vertex_iterator>     vertex_iterator;
+  typedef CGAL::Prevent_deref<typename HDS::Face_iterator>       face_iterator;
+  typedef CGAL::Prevent_deref<typename HDS::Edge_iterator>       edge_iterator_i;
+  typedef CGAL::Prevent_deref<typename HDS::Halfedge_iterator>   halfedge_iterator;
 
 
   typedef boost::transform_iterator<

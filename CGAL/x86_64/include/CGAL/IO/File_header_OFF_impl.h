@@ -18,6 +18,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 //
 //
 // Author(s)     : Lutz Kettner  <kettner@mpi-sb.mpg.de>
@@ -393,7 +394,7 @@ std::istream& operator>>( std::istream& in, File_header_OFF& h) {
         // facets and we do not know the genus of the surface.
         // So we add 12 and a factor of 5 percent.
         if (    h.size_of_halfedges() == 0
-             || h.size_of_halfedges() > double(h.size_of_vertices()
+             || double(h.size_of_halfedges()) > double(h.size_of_vertices()
                 + h.size_of_facets() - 2 + 12) * 2.1
              || h.size_of_halfedges() < (h.size_of_vertices()
                 + h.size_of_facets() - 2) * 2

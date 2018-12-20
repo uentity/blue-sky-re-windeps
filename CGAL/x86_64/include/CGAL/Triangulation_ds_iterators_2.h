@@ -14,6 +14,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 // 
 //
 // Author(s)     : Mariette Yvinec
@@ -21,9 +22,12 @@
 #ifndef CGAL_TRIANGULATION_DS_ITERATORS_2_H
 #define CGAL_TRIANGULATION_DS_ITERATORS_2_H
 
+#include <CGAL/license/TDS_2.h>
+
+
 #include <iterator>
 #include <CGAL/triangulation_assertions.h>
-//#include <CGAL/Triangulation_iterator_adaptator.h>
+#include <CGAL/tags.h>
 
 namespace CGAL {
 

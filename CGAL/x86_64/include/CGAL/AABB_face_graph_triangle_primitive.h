@@ -14,6 +14,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 //
 //
 // Author(s)     : Sebastien Loriot
@@ -22,8 +23,12 @@
 #ifndef CGAL_AABB_FACE_GRAPH_TRIANGLE_PRIMITIVE_H
 #define CGAL_AABB_FACE_GRAPH_TRIANGLE_PRIMITIVE_H
 
+#include <CGAL/license/AABB_tree.h>
+
+#include <CGAL/disable_warnings.h>
+
 #include <CGAL/AABB_primitive.h>
-#include <CGAL/internal/AABB_tree/Halfedge_and_face_graph_property_maps.h>
+#include <CGAL/boost/graph/property_maps.h>
 #include <CGAL/Default.h>
 
 namespace CGAL {
@@ -34,6 +39,7 @@ namespace CGAL {
  * It wraps a handle to a facet of a polyhedron to a 3D triangle.
  * The polyhedron from which the primitive is built should not be deleted
  * while the AABB tree holding the primitive is in use.
+ * The triangle type of the primitive (`Datum`) is `CGAL::Kernel_traits< boost::property_traits< VertexPointPMap >::%value_type >::%Kernel::Triangle_3`.
  *
  * \cgalModels `AABBPrimitiveWithSharedData`
  *
@@ -43,10 +49,9 @@ namespace CGAL {
  *                         The default is `typename boost::property_map< FaceGraph,vertex_point_t>::%type`.
  *\tparam OneFaceGraphPerTree is either `CGAL::Tag_true` or `CGAL::Tag_false`.
  * In the former case, we guarantee that all the primitives will be from a
- * common polyhedron and some data will be factorized so that the size of
+ * common `FaceGraph` and some data will be factorized so that the size of
  * the primitive is reduced. In the latter case, the primitives can be from
- * different polyhedra and extra storage is required in the primitives. The default is `CGAL::Tag_true`.
- *        This parameter is useless for the moment and will be useful in an upcoming release of \cgal.
+ * different graphs and extra storage is required in the primitives. The default is `CGAL::Tag_true`.
  *\tparam CacheDatum is either `CGAL::Tag_true` or `CGAL::Tag_false`. In the former case, the datum is stored
  *        in the primitive, while in the latter it is constructed on the fly to reduce the memory footprint.
  *        The default is `CGAL::Tag_false` (datum is not stored).
@@ -61,12 +66,12 @@ template < class FaceGraph,
 class AABB_face_graph_triangle_primitive
 #ifndef DOXYGEN_RUNNING
   : public AABB_primitive<typename boost::graph_traits<FaceGraph>::face_descriptor,
-                        Triangle_from_face_descriptor_property_map<
+                        Triangle_from_face_descriptor_map<
                           FaceGraph,
                           typename Default::Get<VertexPointPMap,
                                                 typename boost::property_map< FaceGraph,
                                                                               vertex_point_t>::type >::type>,
-                        One_point_from_face_descriptor_property_map<
+                        One_point_from_face_descriptor_map<
                           FaceGraph,
                           typename Default::Get<VertexPointPMap,
                                                 typename boost::property_map< FaceGraph,
@@ -78,8 +83,8 @@ class AABB_face_graph_triangle_primitive
   typedef typename Default::Get<VertexPointPMap, typename boost::property_map< FaceGraph, vertex_point_t>::type >::type VertexPointPMap_;
 
   typedef typename boost::graph_traits<FaceGraph>::face_descriptor Id_;
-  typedef Triangle_from_face_descriptor_property_map<FaceGraph,VertexPointPMap_>  Triangle_property_map;
-  typedef One_point_from_face_descriptor_property_map<FaceGraph,VertexPointPMap_> Point_property_map;
+  typedef Triangle_from_face_descriptor_map<FaceGraph,VertexPointPMap_>  Triangle_property_map;
+  typedef One_point_from_face_descriptor_map<FaceGraph,VertexPointPMap_> Point_property_map;
 
   typedef AABB_primitive< Id_,
                           Triangle_property_map,
@@ -173,6 +178,8 @@ public:
 };
 
 }  // end namespace CGAL
+
+#include <CGAL/enable_warnings.h>
 
 #endif // CGAL_AABB_FACE_GRAPH_TRIANGLE_PRIMITIVE_H
 

@@ -15,6 +15,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 // 
 // Author(s) : Jane Tournois, Raul Gallegos, Pierre Alliez
 //
@@ -22,7 +23,14 @@
 #ifndef CGAL_CONSTRAINED_VORONOI_DIAGRAM_2_H
 #define CGAL_CONSTRAINED_VORONOI_DIAGRAM_2_H
 
+#include <CGAL/license/Mesh_2.h>
+
+
 #include <utility>
+#include <stack>
+#include <CGAL/iterator.h>
+#include <CGAL/tuple.h>
+#include <CGAL/Kernel/global_functions_2.h>
 
 namespace CGAL {
 

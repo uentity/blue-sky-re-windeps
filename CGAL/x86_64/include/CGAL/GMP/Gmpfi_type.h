@@ -13,6 +13,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: LGPL-3.0+
 //
 // Author: Luis Peñaranda <luis.penaranda@gmx.com>
 
@@ -23,6 +24,7 @@
 #include <CGAL/gmp.h>
 #include <mpfr.h>
 #include <CGAL/GMP/Gmpfr_type.h>
+#include <CGAL/GMP/Gmpq_type.h>
 #include <mpfi.h>
 #include <boost/operators.hpp>
 #include <CGAL/Uncertain.h>
@@ -617,8 +619,13 @@ Gmpfi Gmpfi::kthroot(int k,Gmpfi::Precision_type p)const{
         // MPFI does not provide k-th root functions
         CGAL_assertion(p>=MPFR_PREC_MIN&&p<=MPFR_PREC_MAX);
         Gmpfi result (0, p);
-        mpfr_root(&(result.mpfi())->left, left_mpfr(), k,GMP_RNDD);
-        mpfr_root(&(result.mpfi())->right,right_mpfr(),k,GMP_RNDU);
+        #if(MPFR_VERSION_MAJOR < 4)
+            mpfr_root(&(result.mpfi())->left, left_mpfr(), k,GMP_RNDD);
+            mpfr_root(&(result.mpfi())->right,right_mpfr(),k,GMP_RNDU);
+        #else
+            mpfr_rootn_ui(&(result.mpfi())->left, left_mpfr(), k,GMP_RNDD);
+            mpfr_rootn_ui(&(result.mpfi())->right,right_mpfr(),k,GMP_RNDU);
+        #endif
         *(result._left.fr()) = result._interval.left;
         *(result._right.fr()) = result._interval.right;
         return result;

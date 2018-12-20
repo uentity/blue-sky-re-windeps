@@ -14,6 +14,7 @@
 //
 // $URL$
 // $Id$
+// SPDX-License-Identifier: GPL-3.0+
 //
 //
 // Author(s) : Philipp Moeller
@@ -21,6 +22,9 @@
 
 #ifndef CGAL_AABB_RAY_INTERSECTION_H
 #define CGAL_AABB_RAY_INTERSECTION_H
+
+#include <CGAL/license/AABB_tree.h>
+
 
 #include <functional>
 #include <boost/optional.hpp>
