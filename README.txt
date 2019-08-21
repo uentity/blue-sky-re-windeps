@@ -6,11 +6,13 @@ NOTE: because of huge size, Boost headers are NOT included. You need to place 'e
 Includes following components.
 Boost: 1.68
 CGAL: 4.13
-curl: 1.61.1 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundeled OpenSSL)
+curl: 7.64.1 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundled OpenSSL)
 HDF5: 1.10.4
 loki: 0.1.7
 OpenSSL: 1.1.1
 tbb: 2019_20181203oss
-CAF: 0.16.3 with fixes for Windows
+CAF: 0.17.0 with fixes for building DLL on Windows and config parsing
+ANN: 1.1
+freetype: 2.9.0
 Windows CRT: 10.0.17763.0
 MSVC libs: 15.9.1
