@@ -5,20 +5,11 @@
 // Max-Planck-Institute Saarbruecken (Germany),
 // and Tel-Aviv University (Israel).  All rights reserved. 
 //
-// This file is part of CGAL (www.cgal.org); you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of the License,
-// or (at your option) any later version.
+// This file is part of CGAL (www.cgal.org)
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/HalfedgeDS/include/CGAL/HalfedgeDS_iterator_adaptor.h $
+// $Id: HalfedgeDS_iterator_adaptor.h 52164b1 2019-10-19T15:34:59+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Lutz Kettner  <kettner@mpi-sb.mpg.de>
@@ -33,7 +24,7 @@ namespace CGAL {
 //  The iterator identity adaptor will be used for the HDS implementations
 //  that are based on STL (or other) container classes which do not
 //  guarantee that the default construction of its iterator gives always
-//  the same singular value (i.e. something like NULL). This adaptor
+//  the same singular value (i.e. something like nullptr). This adaptor
 //  assumes that iterator traits are fully supported. It works for all
 //  kinds of iterators, from input iterators to random access iterators.
 //  It does no longer require that these iterators have a constructor

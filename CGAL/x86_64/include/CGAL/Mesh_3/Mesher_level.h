@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Mesh_3/include/CGAL/Mesh_3/Mesher_level.h $
+// $Id: Mesher_level.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 //
 // Author(s)     : Laurent RINEAU, Clement JAMIN
@@ -426,7 +417,7 @@ public:
     for (int i = 0 ; i < 4 ; ++i)
       vertices[i] = e->vertex(i);
   }
-  // Among the 4 values, one of them will be Vertex_handle() (~= NULL)
+  // Among the 4 values, one of them will be Vertex_handle() (~= nullptr)
   void get_valid_vertices_of_element(const Facet &e, Vertex_handle vertices[4]) const
   {
     for (int i = 0 ; i < 4 ; ++i)
@@ -859,7 +850,7 @@ public:
   {
 
     CGAL_assertion_msg(triangulation().get_lock_data_structure() == 0,
-      "In refine_sequentially_up_to_N_vertices, the triangulation's locking data structure should be NULL");
+      "In refine_sequentially_up_to_N_vertices, the triangulation's locking data structure should be nullptr");
 
     while(! is_algorithm_done()
       && triangulation().number_of_vertices() < approx_max_num_mesh_vertices)
@@ -1048,6 +1039,11 @@ public:
     {
       // Lock the element area on the grid
       Element element = derivd.extract_element_from_container_value(ce);
+
+      // This is safe to do with the concurrent compact container because even if the element `ce`
+      // gets removed from the TDS at this point, it is not actually deleted in the cells container and
+      // `ce->vertex(0-3)` still points to a vertex of the vertices container whose `.point()`
+      // can be safely accessed (even if that vertex has itself also been removed from the TDS).
       bool locked = derivd.try_lock_element(element, FIRST_GRID_LOCK_RADIUS);
 
       if( locked )

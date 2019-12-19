@@ -4,17 +4,6 @@
  * All rights reserved.
  *
  * This file is part of CGAL (www.cgal.org).
- * You can redistribute it and/or modify it under the terms of the GNU
- * Lesser General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * Licensees holding a valid commercial license may use this file in
- * accordance with the commercial license agreement provided with the
- * software.
- *
- * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- *
  *
  *  File: Sturm.h
  * 
@@ -51,9 +40,9 @@
  * WWW URL: http://cs.nyu.edu/exact/
  * Email: exact@cs.nyu.edu
  *
- * $URL$
- * $Id$
- * SPDX-License-Identifier: LGPL-3.0+
+ * $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_Core/include/CGAL/CORE/poly/Sturm.h $
+ * $Id: Sturm.h 26fb266 2019-10-19T16:28:33+02:00 Sébastien Loriot
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  ***************************************************************************/
 
 
@@ -944,7 +933,7 @@ std::cout << "In newtonRefine, input J=" << J.first
 	// Newton might bring x very close to one endpoint, but it can be
 	// because the root is near there!  In any case,
 	// by setting x to the center of J, you only gain at most
-	// one bit of accuracy, but you stand to loose an
+  // one bit of accuracy, but you stand to lose an
 	// arbitrary amount of bits of accuracy if you are unlucky!
 	// So I will comment out the next line.  --Chee (Aug 9, 2004).
 	// 

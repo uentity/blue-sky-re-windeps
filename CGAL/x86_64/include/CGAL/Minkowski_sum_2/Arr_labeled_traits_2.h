@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Minkowski_sum_2/include/CGAL/Minkowski_sum_2/Arr_labeled_traits_2.h $
+// $Id: Arr_labeled_traits_2.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Ron Wein   <wein_r@yahoo.com>
 
@@ -388,7 +379,7 @@ public:
         base_pt =
           object_cast<std::pair<Base_point_2, unsigned int> > (&(*obj_it));
 
-        if (base_pt != NULL)
+        if (base_pt != nullptr)
         {
           // Attach an invalid label to an itersection point.
           *oi = CGAL::make_object
@@ -398,7 +389,7 @@ public:
         else
         {
           base_xcv = object_cast<Base_x_monotone_curve_2> (&(*obj_it));
-          CGAL_assertion (base_xcv != NULL);
+          CGAL_assertion (base_xcv != nullptr);
 
           // Attach a merged label to the overlapping curve.
           *oi = CGAL::make_object

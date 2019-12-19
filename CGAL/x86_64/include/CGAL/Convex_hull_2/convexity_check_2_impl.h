@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Convex_hull_2/include/CGAL/Convex_hull_2/convexity_check_2_impl.h $
+// $Id: convexity_check_2_impl.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Stefan Schirra
@@ -159,7 +150,7 @@ ch_brute_force_check_2(ForwardIterator1 first1, ForwardIterator1 last1,
 
   if ( first2 == last2) return false;
 
-  if ( cpp11::next(first2) == last2 )
+  if ( std::next(first2) == last2 )
   {
       while (first1 != last1)
       {
@@ -204,7 +195,7 @@ ch_brute_force_chain_check_2(ForwardIterator1 first1,
 
   if ( first2 == last2) return false;
 
-  if ( cpp11::next(first2) == last2 ) return true;
+  if ( std::next(first2) == last2 ) return true;
 
   Left_turn_2  left_turn = ch_traits.left_turn_2_object();
   iter22 = first2;

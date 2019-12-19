@@ -1,20 +1,11 @@
 // Copyright (c) 2014
 // INRIA Saclay-Ile de France (France)
 //
-// This file is part of CGAL (www.cgal.org); you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of the License,
-// or (at your option) any later version.
+// This file is part of CGAL (www.cgal.org)
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/NewKernel_d/include/CGAL/NewKernel_d/Types/Hyperplane.h $
+// $Id: Hyperplane.h 52164b1 2019-10-19T15:34:59+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Marc Glisse
 
@@ -33,6 +24,7 @@ template <class R_> class Hyperplane {
 	FT_ s_;
 
 	public:
+	Hyperplane(){}
 	Hyperplane(Vector_ const&v, FT_ const&s): v_(v), s_(s) {}
 	// TODO: Add a piecewise constructor?
 
@@ -62,7 +54,15 @@ template <class R_> struct Construct_hyperplane : Store_kernel<R_> {
   // Not really needed
   result_type operator()()const{
     typename Get_functor<R_, Construct_ttag<Vector_tag> >::type cv(this->kernel());
+
+#if defined(BOOST_MSVC) && (BOOST_MSVC == 1900)
+#  pragma warning(push)
+#  pragma warning(disable: 4309)
+#endif    
     return result_type(cv(),0);
+#if defined(BOOST_MSVC) && (BOOST_MSVC == 1900)
+#  pragma warning(pop)
+#endif
   }
 
   template <class Iter>

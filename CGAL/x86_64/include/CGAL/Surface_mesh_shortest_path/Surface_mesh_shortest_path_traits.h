@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Surface_mesh_shortest_path/include/CGAL/Surface_mesh_shortest_path/Surface_mesh_shortest_path_traits.h $
+// $Id: Surface_mesh_shortest_path_traits.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Stephen Kiazyk
 
@@ -63,7 +54,7 @@ public:
   typedef typename Kernel::FT FT;
 
   /// Barycentric coordinates type
-  typedef typename CGAL::cpp11::array<FT,3> Barycentric_coordinates;
+  typedef typename std::array<FT,3> Barycentric_coordinates;
 
   // Predicates
   typedef typename Surface_mesh_shortest_paths_3::Compare_relative_intersection_along_segment_2<Kernel> Compare_relative_intersection_along_segment_2;

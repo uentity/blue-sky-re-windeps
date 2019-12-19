@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Nef_3/include/CGAL/Nef_3/SNC_point_locator.h $
+// $Id: SNC_point_locator.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Miguel Granados <granados@mpi-sb.mpg.de>
@@ -314,7 +305,7 @@ public:
 #else
     CGAL_NEF_CLOG(version());
 #endif
-    CGAL_assertion( W != NULL);
+    CGAL_assertion( W != nullptr);
 //    (Base) *this = SNC_decorator(*W);
     this->set_snc(*W);
     Object_list objects;
@@ -1277,7 +1268,7 @@ public:
     CGAL_NEF_TIMER(ct_t.start());
     this->version_ = std::string("Naive Point Locator (tm)");
     CGAL_NEF_CLOG(version());
-    CGAL_assertion( W != NULL);
+    CGAL_assertion( W != nullptr);
     Base::initialize(W); 
     initialized = true;
     CGAL_NEF_TIMER(ct_t.stop());

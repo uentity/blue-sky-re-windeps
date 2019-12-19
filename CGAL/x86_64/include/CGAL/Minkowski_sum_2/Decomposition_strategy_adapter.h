@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Minkowski_sum_2/include/CGAL/Minkowski_sum_2/Decomposition_strategy_adapter.h $
+// $Id: Decomposition_strategy_adapter.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s) : Ron Wein   <wein_r@yahoo.com>
 //             Efi Fogel  <efifogel@gmail.com>
@@ -62,7 +53,7 @@ protected:
 public:
   /*! Default constructor. */
   Polygon_decomposition_strategy_adapter() :
-    m_traits(NULL),
+    m_traits(nullptr),
     m_own_traits(false)
   { init(); }
 
@@ -76,9 +67,9 @@ public:
   ~Polygon_decomposition_strategy_adapter()
   {
     if (m_own_traits) {
-      if (m_traits != NULL) {
+      if (m_traits != nullptr) {
         delete m_traits;
-        m_traits = NULL;
+        m_traits = nullptr;
       }
       m_own_traits = false;
     }
@@ -88,7 +79,7 @@ public:
   void init()
   {
     // Allocate the traits if not provided.
-    if (m_traits == NULL) {
+    if (m_traits == nullptr) {
       m_traits = new Traits_2;
       m_own_traits = true;
     }

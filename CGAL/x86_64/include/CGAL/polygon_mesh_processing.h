@@ -2,25 +2,16 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Polygon_mesh_processing/include/CGAL/polygon_mesh_processing.h $
+// $Id: polygon_mesh_processing.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Jane Tournois
 
 /**
-* \ingroup PkgPolygonMeshProcessing
+* \ingroup PkgPolygonMeshProcessingRef
 * \file CGAL/polygon_mesh_processing.h
 * Convenience header file including the headers for all
 * the free functions of this package.
@@ -49,6 +40,11 @@
 #include <CGAL/Polygon_mesh_processing/distance.h>
 #include <CGAL/Polygon_mesh_processing/intersection.h>
 #include <CGAL/Polygon_mesh_processing/transform.h>
+#include <CGAL/Polygon_mesh_processing/shape_predicates.h>
+#include <CGAL/Polygon_mesh_processing/repair_polygon_soup.h>
+#include <CGAL/Polygon_mesh_processing/merge_border_vertices.h>
+#include <CGAL/Polygon_mesh_processing/smooth_mesh.h>
+#include <CGAL/Polygon_mesh_processing/smooth_shape.h>
 
 // the named parameter header being not documented the doc is put here for now
 #ifdef DOXYGEN_RUNNING

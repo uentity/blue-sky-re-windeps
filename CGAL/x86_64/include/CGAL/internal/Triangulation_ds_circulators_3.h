@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/TDS_3/include/CGAL/internal/Triangulation_ds_circulators_3.h $
+// $Id: Triangulation_ds_circulators_3.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Monique Teillaud <Monique.Teillaud@sophia.inria.fr>
 
@@ -149,13 +140,13 @@ public:
     return ch != pos;
   }
 
-  bool operator==(Nullptr_t CGAL_triangulation_assertion_code(n)) const
+  bool operator==(std::nullptr_t CGAL_triangulation_assertion_code(n)) const
   {
-    CGAL_triangulation_assertion( n == NULL);
+    CGAL_triangulation_assertion( n == nullptr);
     return pos == Cell_handle();
   }
 
-  bool operator!=(Nullptr_t n) const
+  bool operator!=(std::nullptr_t n) const
   {
     return ! (*this == n);
   }
@@ -368,13 +359,13 @@ public:
     return ! (*this == ccir);
   }
 
-  bool operator==(Nullptr_t CGAL_triangulation_assertion_code(c)) const
+  bool operator==(std::nullptr_t CGAL_triangulation_assertion_code(c)) const
   {
-    CGAL_triangulation_assertion(c == NULL);
+    CGAL_triangulation_assertion(c == nullptr);
     return pos == Cell_handle();
   }
 
-  bool operator!=(Nullptr_t c) const
+  bool operator!=(std::nullptr_t c) const
   {
     return ! (*this == c);
   }
@@ -468,13 +459,13 @@ public:
     return ! (*this == ccir);
   }
 
-  bool operator==(Nullptr_t CGAL_triangulation_assertion_code(c)) const
+  bool operator==(std::nullptr_t CGAL_triangulation_assertion_code(c)) const
   {
-    CGAL_triangulation_assertion(c == NULL);
+    CGAL_triangulation_assertion(c == nullptr);
     return pos == Cell_handle();
   }
 
-  bool operator!=(Nullptr_t c) const
+  bool operator!=(std::nullptr_t c) const
   {
     return ! (*this == c);
   }

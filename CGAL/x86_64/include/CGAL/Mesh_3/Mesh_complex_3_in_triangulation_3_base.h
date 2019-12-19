@@ -3,19 +3,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Mesh_3/include/CGAL/Mesh_3/Mesh_complex_3_in_triangulation_3_base.h $
+// $Id: Mesh_complex_3_in_triangulation_3_base.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 //
 // Author(s)     : Laurent Rineau, Stéphane Tayeb
@@ -61,12 +52,6 @@ namespace CGAL {
   }
 
 
-  template < class DSC, bool Const >
-  std::size_t tbb_hasher(const CGAL::CCC_internal::CCC_iterator<DSC, Const>& it)
-  {
-    return CGAL::CCC_internal::hash_value(it);
-  }
-
   // As Marc Glisse pointed out the TBB hash of a std::pair is
   // simplistic and leads to the
   // TBB Warning: Performance is not optimal because the hash function
@@ -80,14 +65,6 @@ namespace CGAL {
                                  CGAL::internal::CC_iterator<DSC, Const> > >()(p);
   }
 
-
-  template < class DSC, bool Const >
-  std::size_t tbb_hasher(const std::pair<CGAL::CCC_internal::CCC_iterator<DSC, Const>,
-                                         CGAL::CCC_internal::CCC_iterator<DSC, Const> >& p)
-  {
-    return boost::hash<std::pair<CGAL::CCC_internal::CCC_iterator<DSC, Const>,
-                                 CGAL::CCC_internal::CCC_iterator<DSC, Const> > >()(p);
-  }
 
 }
 #endif
@@ -551,9 +528,11 @@ public:
         fit != end; ++fit)
     {
       Facet facet = *fit;
-      Facet mirror = tr_.mirror_facet(facet);
       set_surface_patch_index(facet.first, facet.second, Surface_patch_index());
-      set_surface_patch_index(mirror.first, mirror.second, Surface_patch_index());
+      if(this->triangulation().dimension() > 2) {
+        Facet mirror = tr_.mirror_facet(facet);
+        set_surface_patch_index(mirror.first, mirror.second, Surface_patch_index());
+      }
     }
     this->number_of_facets_ = 0;
     clear_manifold_info();

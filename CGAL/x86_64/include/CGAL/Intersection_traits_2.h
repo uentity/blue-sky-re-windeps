@@ -1,20 +1,11 @@
 // Copyright (c) 2011 GeometryFactory (France). All rights reserved.
 // All rights reserved.
 //
-// This file is part of CGAL (www.cgal.org); you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of the License,
-// or (at your option) any later version.
+// This file is part of CGAL (www.cgal.org)
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Intersections_2/include/CGAL/Intersection_traits_2.h $
+// $Id: Intersection_traits_2.h 52164b1 2019-10-19T15:34:59+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Philipp Möller
@@ -27,8 +18,6 @@
 #include <boost/variant.hpp>
 #include <boost/optional.hpp>
 #include <vector>
-
-#if !(CGAL_INTERSECTION_VERSION < 2)
 
 namespace CGAL {
 
@@ -97,6 +86,11 @@ struct Intersection_traits<K, A, typename K::Point_2> {
   typedef boost::optional<variant_type> result_type;
 };
 
+template<typename K>
+struct Intersection_traits<K, typename K::Point_2, typename K::Point_2> {
+  typedef typename boost::variant<typename K::Point_2> variant_type;
+  typedef boost::optional<variant_type> result_type;
+};
 
 template<typename K>
 struct Intersection_traits<K, typename K::Iso_rectangle_2, typename K::Triangle_2>
@@ -112,8 +106,6 @@ struct Intersection_traits<K, typename K::Triangle_2, typename K::Iso_rectangle_
   : public Intersection_traits<K, typename K::Iso_rectangle_2, typename K::Triangle_2> {};
 
 } // namespace CGAL
-
-#endif
 
 #endif /* CGAL_INTERSECTION_TRAITS_2_H */
 

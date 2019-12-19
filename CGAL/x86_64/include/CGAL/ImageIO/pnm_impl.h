@@ -1,21 +1,11 @@
 // Copyright (c) 2005-2008 ASCLEPIOS Project, INRIA Sophia-Antipolis (France)
 // All rights reserved.
 //
-// This file is part of the ImageIO Library, and as been adapted for
-// CGAL (www.cgal.org).
-// You can redistribute it and/or  modify it under the terms of the
-// GNU Lesser General Public License as published by the Free Software Foundation;
-// either version 3 of the License, or (at your option) any later version.
+// This file is part of the ImageIO Library, and as been adapted for CGAL (www.cgal.org).
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// These files are provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_ImageIO/include/CGAL/ImageIO/pnm_impl.h $
+// $Id: pnm_impl.h 07c4ada 2019-10-19T15:50:09+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later
 //
 //
 // Author(s)     :  ASCLEPIOS Project (INRIA Sophia-Antipolis), Laurent Rineau
@@ -263,7 +253,7 @@ int writePpmImage( char *name,_image *im )
     */
     unsigned short *buf = (unsigned short *)im->data;
     unsigned char *tmp = (unsigned char *)ImageIO_alloc( im->xdim*im->ydim*3 );
-    if ( tmp == NULL ) {
+    if ( tmp == nullptr ) {
       fprintf( stderr, "writePpmImage: unable to allocate auxiliary buffer\n" );
       return -1; 
     }
@@ -377,12 +367,12 @@ int readPgmAsciiImage(const char *name,_image *im)
       case WK_FIXED :
 	if ( sscanf( tmp, "%d", &iv ) != 1 ) {
 	  fprintf( stderr, "readAsciiPgmImage: error in reading ascii data\n" );
-	  ImageIO_free( im->data ); im->data = NULL;
+	  ImageIO_free( im->data ); im->data = nullptr;
 	  return 0;
 	}
 	break;
       default :
-	ImageIO_free( im->data ); im->data = NULL;
+	ImageIO_free( im->data ); im->data = nullptr;
 	return 0;
       }
 	  
@@ -404,7 +394,7 @@ int readPgmAsciiImage(const char *name,_image *im)
       }
       else {
 	fprintf( stderr, "readAsciiPgmImage: word im not handled\n" );
-	ImageIO_free( im->data ); im->data = NULL;
+	ImageIO_free( im->data ); im->data = nullptr;
 	return 0;
       }
       
@@ -624,7 +614,7 @@ int writePgmImage(char *name,_image *im  )
       */
       unsigned short *buf = (unsigned short *)im->data;
       unsigned char *tmp = (unsigned char *)ImageIO_alloc( im->xdim*im->ydim );
-      if ( tmp == NULL ) {
+      if ( tmp == nullptr ) {
 	fprintf( stderr, "writePgmImage: unable to allocate auxiliary buffer\n" );
 	return -1; 
       }

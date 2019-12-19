@@ -4,17 +4,6 @@
  * All rights reserved.
  *
  * This file is part of CGAL (www.cgal.org).
- * You can redistribute it and/or modify it under the terms of the GNU
- * Lesser General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * Licensees holding a valid commercial license may use this file in
- * accordance with the commercial license agreement provided with the
- * software.
- *
- * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- *
  *
  * File: Filter.h
  * Synopsis:
@@ -31,9 +20,9 @@
  * WWW URL: http://cs.nyu.edu/exact/
  * Email: exact@cs.nyu.edu
  *
- * $URL$
- * $Id$
- * SPDX-License-Identifier: LGPL-3.0+
+ * $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_Core/include/CGAL/CORE/Filter.h $
+ * $Id: Filter.h 26fb266 2019-10-19T16:28:33+02:00 Sébastien Loriot
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  ***************************************************************************/
 
 #ifndef _CORE_FILTER_H_
@@ -45,14 +34,8 @@
 #include <cmath>
 #include <limits>
 
-#if !defined CGAL_CFG_NO_CPP0X_ISFINITE
-  #define CGAL_CORE_finite(x)	std::isfinite(x)
-#elif defined (_MSC_VER) || defined (__MINGW32__) // add support for MinGW
-  #define CGAL_CORE_finite(x)	_finite(x)
-  #define ilogb(x)	(int)_logb(x)
-#else
-  #define CGAL_CORE_finite(x)	finite(x)
-#endif
+#define CGAL_CORE_finite(x)	std::isfinite(x)
+#define CGAL_CORE_ilogb(x)	ilogb(x)
 
 #if defined(sun) || defined(__sun)
   #include <ieeefp.h>
@@ -126,11 +109,11 @@ public:
       ilogb(x) is floor(log_2(|x|)). 
       Also, ilogb(0) = -INT_MAX.  ilogb(NaN) = ilogb(+/-Inf) = INT_MAX */
   extLong lMSB() const {
-    return extLong(ilogb(core_abs(fpVal)-maxAbs*ind*CORE_EPS));
+    return extLong(CGAL_CORE_ilogb(core_abs(fpVal)-maxAbs*ind*CORE_EPS));
   }
   /// upper bound on MSB
   extLong uMSB() const {
-    return extLong(ilogb(core_abs(fpVal)+maxAbs*ind*CORE_EPS));
+    return extLong(CGAL_CORE_ilogb(core_abs(fpVal)+maxAbs*ind*CORE_EPS));
   }
   //@}
 

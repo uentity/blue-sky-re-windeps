@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/GraphicsView/include/CGAL/Qt/DelaunayMeshTriangulationGraphicsItem.h $
+// $Id: DelaunayMeshTriangulationGraphicsItem.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 // 
 //
 // Author(s)     : Laurent Rineau <Laurent.Rineau@geometryfactory.com>
@@ -265,14 +256,14 @@ DelaunayMeshTriangulationGraphicsItem<T>::paintSeeds(QPainter *painter)
   {
     Converter<Geom_traits> convert;
     painter->setPen(this->seedsPen());
-    QMatrix matrix = painter->matrix();
-    painter->resetMatrix();
+    QTransform matrix = painter->worldTransform();
+    painter->resetTransform();
 
     typename std::list<Point>::iterator sit;
     for(sit = seeds_begin; sit != seeds_end; ++sit)
       painter->drawPoint(matrix.map(convert(*sit)));
 
-    painter->setMatrix(matrix);
+    painter->setWorldTransform(matrix);
   }
 }
 

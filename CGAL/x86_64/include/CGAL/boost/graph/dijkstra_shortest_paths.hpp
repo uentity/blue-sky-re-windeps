@@ -10,11 +10,11 @@
 //
 // Distributed under the Boost Software License, Version 1.0. (See
 // accompanying file LICENSE_1_0.txt or copy at
-// http://www.boost.org/LICENSE_1_0.txt)
+// https://www.boost.org/LICENSE_1_0.txt)
 //=======================================================================
 //
-// $URL$
-// $Id$
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/BGL/include/CGAL/boost/graph/dijkstra_shortest_paths.hpp $
+// $Id: dijkstra_shortest_paths.hpp a472c24 2019-03-20T08:59:22+01:00 Andreas Fabri
 // SPDX-License-Identifier: BSL-1.0
 //
 // Revision History:

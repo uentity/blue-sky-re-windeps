@@ -4,17 +4,6 @@
  * All rights reserved.
  *
  * This file is part of CGAL (www.cgal.org).
- * You can redistribute it and/or modify it under the terms of the GNU
- * Lesser General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * Licensees holding a valid commercial license may use this file in
- * accordance with the commercial license agreement provided with the
- * software.
- *
- * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- *
  *
  * File: Real.cpp
  * Synopsis: The Real class is a superclass for all the number 
@@ -31,9 +20,9 @@
  * WWW URL: http://cs.nyu.edu/exact/
  * Email: exact@cs.nyu.edu
  *
- * $URL$
- * $Id$
- * SPDX-License-Identifier: LGPL-3.0+
+ * $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_Core/include/CGAL/CORE/Real_impl.h $
+ * $Id: Real_impl.h 26fb266 2019-10-19T16:28:33+02:00 Sébastien Loriot
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  ***************************************************************************/
 
 #ifdef CGAL_HEADER_ONLY
@@ -134,7 +123,7 @@ void Real::constructFromString(const char *str, const extLong& prec )
   //		Moreover, the value of prec is ignored (basically
   //		assumed to be infinity).
 
-  if (std::strchr(str, '/') != NULL) {	// this is a rational number
+  if (std::strchr(str, '/') != nullptr) {	// this is a rational number
     rep = new RealBigRat(BigRat(str));
     return;
   }
@@ -142,7 +131,7 @@ void Real::constructFromString(const char *str, const extLong& prec )
   const char *e = std::strchr(str, 'e');
   int dot = 0;
   long e10 = 0;
-  if (e != NULL)
+  if (e != nullptr)
     e10 = std::atol(e+1);	// e10 is decimal precision of the input string
   // i.e., input is A/10^{e10}.
   else {

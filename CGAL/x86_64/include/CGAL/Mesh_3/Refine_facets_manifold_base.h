@@ -2,19 +2,10 @@
 // Copyright (c) 2008,2013  GeometryFactory, Sophia Antipolis (France)
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Mesh_3/include/CGAL/Mesh_3/Refine_facets_manifold_base.h $
+// $Id: Refine_facets_manifold_base.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 //
 // Author(s)     : Steve Oudot, David Rey, Mariette Yvinec, Laurent Rineau, Andreas Fabri
@@ -35,7 +26,6 @@
 #include <boost/bimap.hpp>
 #include <boost/bimap/unordered_set_of.hpp>
 #include <boost/bimap/multiset_of.hpp>
-#include <boost/foreach.hpp>
 #include <boost/mpl/has_xxx.hpp>
 #include <boost/unordered_set.hpp>
 
@@ -431,7 +421,7 @@ public:
     std::cerr << "   -> found " << n << " bad vertices\n";
 #  ifdef CGAL_MESHES_DEBUG_REFINEMENT_POINTS
     std::cerr << "Bad vertices queue:\n";
-    BOOST_FOREACH(Vertex_handle v2, m_bad_vertices)
+    for(Vertex_handle v2 : m_bad_vertices)
     {
       std::cerr << this->r_tr_.point(v2) << std::endl;
     }
@@ -505,7 +495,7 @@ public:
         const Vertex_handle& v = *m_bad_vertices.begin();
 #ifdef CGAL_MESHES_DEBUG_REFINEMENT_POINTS
         std::cerr << "Bad vertices queue:\n";
-        BOOST_FOREACH(Vertex_handle v2, m_bad_vertices)
+        for(Vertex_handle v2 : m_bad_vertices)
         {
           std::cerr << this->r_tr_.point(v2) << std::endl;
         }

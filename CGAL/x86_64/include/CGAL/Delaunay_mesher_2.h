@@ -2,20 +2,11 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Mesh_2/include/CGAL/Delaunay_mesher_2.h $
+// $Id: Delaunay_mesher_2.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
-// 
 //
 // Author(s)     : Laurent RINEAU
 
@@ -85,6 +76,7 @@ public:
       edges_level(tr, clusters_, null_level),
       faces_level(tr, criteria, edges_level),
       visitor(faces_level, edges_level, null_visitor),
+      seeds_mark(false),
       initialized(false)
   {
   }
@@ -99,6 +91,7 @@ public:
       edges_level(edges_level_),
       faces_level(tr, criteria, edges_level),
       visitor(faces_level, null_visitor),
+      seeds_mark(false),
       initialized(false)
   {
   }
@@ -173,7 +166,7 @@ public:
         for(Seeds_it sit=begin; sit!=end; ++sit)
           {
             Face_handle fh=tr.locate(*sit);
-            if(fh!=NULL)
+            if(fh!=nullptr)
               propagate_marks(fh, mark);
           }
 	propagate_marks(tr.infinite_face(), false);

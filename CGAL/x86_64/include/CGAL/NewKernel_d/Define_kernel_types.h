@@ -1,20 +1,11 @@
 // Copyright (c) 2014
 // INRIA Saclay-Ile de France (France)
 //
-// This file is part of CGAL (www.cgal.org); you can redistribute it and/or
-// modify it under the terms of the GNU Lesser General Public License as
-// published by the Free Software Foundation; either version 3 of the License,
-// or (at your option) any later version.
+// This file is part of CGAL (www.cgal.org)
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/NewKernel_d/include/CGAL/NewKernel_d/Define_kernel_types.h $
+// $Id: Define_kernel_types.h 52164b1 2019-10-19T15:34:59+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Marc Glisse
 
@@ -23,11 +14,6 @@
 #include <CGAL/config.h>
 #include <CGAL/NewKernel_d/functor_tags.h>
 #include <CGAL/typeset.h>
-#ifdef CGAL_CXX11
-#include <type_traits>
-#else
-#include <boost/type_traits.hpp>
-#endif
 
 namespace CGAL {
   namespace internal {

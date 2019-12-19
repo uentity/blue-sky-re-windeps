@@ -2,20 +2,11 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// SPDX-License-Identifier: GPL-3.0+
-//
-// $URL$
-// $Id$
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Alpha_shapes_2/include/CGAL/Alpha_shape_2.h $
+// $Id: Alpha_shape_2.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
 // Author(s)     : Tran Kai Frank DA
 //                 Andreas Fabri <Andreas.Fabri@geometryfactory.com>
 
@@ -319,7 +310,7 @@ public:
       return n;
     }
 
-private :
+protected :
 
   //--------------------- INITIALIZATION OF PRIVATE MEMBERS -----------
 
@@ -1333,7 +1324,7 @@ Alpha_shape_2<Dt,EACT>::number_of_solid_components(const Type_of_alpha& alpha) c
        ++face_it) 
     {
       Face_handle pFace = face_it;
-      CGAL_triangulation_postcondition( pFace != NULL);
+      CGAL_triangulation_postcondition( pFace != nullptr);
       
       if (classify(pFace, alpha) == INTERIOR){
 	Data& data = marked_face_set[pFace];
@@ -1367,7 +1358,7 @@ Alpha_shape_2<Dt,EACT>::traverse(const Face_handle& pFace,
     for (int i=0; i<3; i++)
       {
 	pNeighbor = fh->neighbor(i);
-	 CGAL_triangulation_assertion(pNeighbor != NULL);
+	 CGAL_triangulation_assertion(pNeighbor != nullptr);
 	if (classify(pNeighbor, alpha) == INTERIOR){
 	  Data& data = marked_face_set[pNeighbor];
 	  if(data == false){

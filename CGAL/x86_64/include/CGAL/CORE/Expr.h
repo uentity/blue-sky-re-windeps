@@ -4,17 +4,6 @@
  * All rights reserved.
  *
  * This file is part of CGAL (www.cgal.org).
- * You can redistribute it and/or modify it under the terms of the GNU
- * Lesser General Public License as published by the Free Software Foundation,
- * either version 3 of the License, or (at your option) any later version.
- *
- * Licensees holding a valid commercial license may use this file in
- * accordance with the commercial license agreement provided with the
- * software.
- *
- * This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
- * WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
- *
  *
  * File: Expr.h
  * Synopsis: a class of Expression in Level 3
@@ -32,9 +21,9 @@
  * WWW URL: http://cs.nyu.edu/exact/
  * Email: exact@cs.nyu.edu
  *
- * $URL$
- * $Id$
- * SPDX-License-Identifier: LGPL-3.0+
+ * $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_Core/include/CGAL/CORE/Expr.h $
+ * $Id: Expr.h 26fb266 2019-10-19T16:28:33+02:00 Sébastien Loriot
+ * SPDX-License-Identifier: LGPL-3.0-or-later
  ***************************************************************************/
 
 // We need to include BigFloat.h here because there is a circular dependency
@@ -80,7 +69,7 @@ public:
    *  (or, for that matter, as a binary fraction of any finite length). 
    *  The value is the closest double value determined by the compiler.
    */
-  Expr(float f) : RCExpr(NULL) { // check for valid numbers
+  Expr(float f) : RCExpr(nullptr) { // check for valid numbers
     // (i.e., not infinite and not NaN)
     if (! CGAL_CORE_finite(f)) {
       core_error(" ERROR : constructed an invalid float! ", __FILE__, __LINE__, false);
@@ -91,7 +80,7 @@ public:
     rep = new ConstDoubleRep(f);
   }
   /// constructor for <tt>double</tt>
-  Expr(double d) : RCExpr(NULL) { // check for valid numbers
+  Expr(double d) : RCExpr(nullptr) { // check for valid numbers
     // (i.e., not infinite and not NaN)
     if (! CGAL_CORE_finite(d)) {
       core_error(" ERROR : constructed an invalid double! ", __FILE__, __LINE__, false);

@@ -1,21 +1,11 @@
 // Copyright (c) 2005-2008 ASCLEPIOS Project, INRIA Sophia-Antipolis (France)
 // All rights reserved.
 //
-// This file is part of the ImageIO Library, and as been adapted for
-// CGAL (www.cgal.org).
-// You can redistribute it and/or  modify it under the terms of the
-// GNU Lesser General Public License as published by the Free Software Foundation;
-// either version 3 of the License, or (at your option) any later version.
+// This file is part of the ImageIO Library, and as been adapted for CGAL (www.cgal.org).
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// These files are provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: LGPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/CGAL_ImageIO/include/CGAL/ImageIO/analyze_impl.h $
+// $Id: analyze_impl.h 07c4ada 2019-10-19T15:50:09+02:00 Sébastien Loriot
+// SPDX-License-Identifier: LGPL-3.0-or-later
 //
 //
 // Author(s)     :  ASCLEPIOS Project (INRIA Sophia-Antipolis), Laurent Rineau
@@ -249,7 +239,7 @@ int writeAnalyze( char *name, _image* im) {
   _openWriteImage(im, outputName);
   if( !im->fd ) {
     fprintf(stderr, "writeAnalyze: error: unable to open file \'%s\'\n", outputName);
-    if ( outputName != NULL ) ImageIO_free( outputName );
+    if ( outputName != nullptr ) ImageIO_free( outputName );
     return ImageIO_OPENING;
   }
 
@@ -257,9 +247,9 @@ int writeAnalyze( char *name, _image* im) {
   if ( res < 0 ) {
     fprintf(stderr, "writeAnalyze: error: unable to write header of \'%s\'\n",
 	    outputName);
-    if ( outputName != NULL ) ImageIO_free( outputName );
+    if ( outputName != nullptr ) ImageIO_free( outputName );
     ImageIO_close( im );
-    im->fd = NULL;
+    im->fd = nullptr;
     im->openMode = OM_CLOSE;
     return( res );
   }
@@ -278,7 +268,7 @@ int writeAnalyze( char *name, _image* im) {
 
   if( !im->fd ) {
     fprintf(stderr, "writeAnalyze: error: unable to open file \'%s\'\n", outputName);
-    if ( outputName != NULL ) ImageIO_free( outputName );
+    if ( outputName != nullptr ) ImageIO_free( outputName );
     return ImageIO_OPENING;
   }
 
@@ -287,14 +277,14 @@ int writeAnalyze( char *name, _image* im) {
     fprintf(stderr, "writeAnalyze: error: unable to write data in \'%s\'\n",
 	    outputName );
     ImageIO_close( im );
-    im->fd = NULL;
+    im->fd = nullptr;
     im->openMode = OM_CLOSE;
     return( res );
   }
 
-  if ( outputName != NULL ) ImageIO_free( outputName );
+  if ( outputName != nullptr ) ImageIO_free( outputName );
   ImageIO_close( im );
-  im->fd = NULL;
+  im->fd = nullptr;
   im->openMode = OM_CLOSE;
 
   return ( res );
@@ -469,7 +459,7 @@ int _readAnalyzeHeader( _image* im, const char* name,
        */
       im->nuser = 1 + 17 ;
       im->user = (char **) ImageIO_alloc(im->nuser * sizeof(char *));
-      for ( i=0; i<im->nuser; i++ ) im->user[i] = NULL;
+      for ( i=0; i<im->nuser; i++ ) im->user[i] = nullptr;
       i = 0 ;
       
       im->user[i] = (char *) ImageIO_alloc((strlen("Data lost in the Analyze -> ImageIO conversion:") + 1));
@@ -529,7 +519,7 @@ int _readAnalyzeHeader( _image* im, const char* name,
 
 
       /* header is read. close header file and open data file. */
-      if( name != NULL ) {
+      if( name != nullptr ) {
 
         std::size_t length = strlen(name) ;
 	char* data_filename = (char *) ImageIO_alloc(length+4) ;
@@ -841,7 +831,7 @@ int printAnalyzeHeader( const char* name )
 
 
   ImageIO_close(im);
-  im->fd = NULL;
+  im->fd = nullptr;
   im->openMode = OM_CLOSE;
   _freeImage(im);
   return( 1 );

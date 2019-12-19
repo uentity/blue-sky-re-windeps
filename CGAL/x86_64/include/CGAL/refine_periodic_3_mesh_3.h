@@ -3,19 +3,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Periodic_3_mesh_3/include/CGAL/refine_periodic_3_mesh_3.h $
+// $Id: refine_periodic_3_mesh_3.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Stephane Tayeb,
 //                 Mikhail Bogdanov,
@@ -116,7 +107,6 @@ void project_points(C3T3& c3t3,
     const Weighted_point& vh_wp = c3t3.triangulation().point(vh);
     const Bare_point& vh_p = cp(vh_wp);
     const Bare_point new_point = helper.project_on_surface(vh, vh_p);
-    CGAL_assertion(new_point != Bare_point());
 
     const FT sq_d = CGAL::squared_distance(new_point, vh_p);
 
@@ -143,6 +133,11 @@ void project_points(C3T3& c3t3,
 }
 
 } // namespace internal
+
+#if defined(BOOST_MSVC)
+#  pragma warning(push)
+#  pragma warning(disable:4003) // not enough actual parameters for macro
+#endif
 
 // see <CGAL/config.h>
 CGAL_PRAGMA_DIAG_PUSH
@@ -180,6 +175,10 @@ BOOST_PARAMETER_FUNCTION(
 }
 
 CGAL_PRAGMA_DIAG_POP
+
+#if defined(BOOST_MSVC)
+#  pragma warning(pop)
+#endif
 
 /**
  * @brief This function refines the mesh c3t3 wrt domain & criteria

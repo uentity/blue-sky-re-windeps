@@ -2,19 +2,10 @@
 // All rights reserved.
 //
 // This file is part of CGAL (www.cgal.org).
-// You can redistribute it and/or modify it under the terms of the GNU
-// General Public License as published by the Free Software Foundation,
-// either version 3 of the License, or (at your option) any later version.
 //
-// Licensees holding a valid commercial license may use this file in
-// accordance with the commercial license agreement provided with the software.
-//
-// This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
-// WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
-//
-// $URL$
-// $Id$
-// SPDX-License-Identifier: GPL-3.0+
+// $URL: https://github.com/CGAL/cgal/blob/releases/CGAL-5.0/Triangulation_2/include/CGAL/draw_triangulation_2.h $
+// $Id: draw_triangulation_2.h 254d60f 2019-10-19T15:23:19+02:00 Sébastien Loriot
+// SPDX-License-Identifier: GPL-3.0-or-later OR LicenseRef-Commercial
 //
 // Author(s)     : Guillaume Damiand <guillaume.damiand@liris.cnrs.fr>
 
@@ -26,6 +17,7 @@
 
 #ifdef CGAL_USE_BASIC_VIEWER
 
+#include <CGAL/Triangulation_2.h>
 #include <CGAL/Random.h>
 
 namespace CGAL
@@ -47,11 +39,11 @@ struct DefaultColorFunctorT2
 template<class T2, class ColorFunctor>
 class SimpleTriangulation2ViewerQt : public Basic_viewer_qt
 {
-  typedef Basic_viewer_qt                     Base;
-  typedef typename T2::Vertex_handle          Vertex_const_handle;
+  typedef Basic_viewer_qt                    Base;
+  typedef typename T2::Vertex_handle         Vertex_const_handle;
   typedef typename T2::Finite_edges_iterator Edge_const_handle;
   typedef typename T2::Finite_faces_iterator Facet_const_handle;
-  typedef typename T2::Point                  Point;
+  typedef typename T2::Point                 Point;
  
 public:
   /// Construct the viewer.
@@ -135,48 +127,35 @@ protected:
   bool m_nofaces;
   const ColorFunctor& m_fcolor;
 };
+
+// Specialization of draw function.
+#define CGAL_T2_TYPE CGAL::Triangulation_2<Gt, Tds>
   
-template<class T2, class ColorFunctor>
-void draw(const T2& at2,
-          const char* title,
-          bool nofill,
-          const ColorFunctor& fcolor)
+template<class Gt, class Tds>
+void draw(const CGAL_T2_TYPE& at2,
+          const char* title="Triangulation_2 Basic Viewer",
+          bool nofill=false)
 {
 #if defined(CGAL_TEST_SUITE)
   bool cgal_test_suite=true;
 #else
-  bool cgal_test_suite=false;
+  bool cgal_test_suite=qEnvironmentVariableIsSet("CGAL_TEST_SUITE");
 #endif
-
+  
   if (!cgal_test_suite)
   {
     int argc=1;
     const char* argv[2]={"t2_viewer","\0"};
-    QApplication app(argc,const_cast<char**>(argv)); 
-    SimpleTriangulation2ViewerQt<T2, ColorFunctor> mainwindow(app.activeWindow(),
-                                                              at2,
-                                                              title,
-                                                              nofill,
-                                                              fcolor);
+    QApplication app(argc,const_cast<char**>(argv));
+    DefaultColorFunctorT2 fcolor;
+    SimpleTriangulation2ViewerQt<CGAL_T2_TYPE, DefaultColorFunctorT2>
+      mainwindow(app.activeWindow(), at2, title, nofill, fcolor);
     mainwindow.show();
     app.exec();
   }
 }
 
-template<class T2>
-void draw(const T2& at2, const char* title, bool nofill)
-{
-  DefaultColorFunctorT2 c;
-  draw(at2, title, nofill, c);
-}
-
-template<class T2>
-void draw(const T2& at2, const char* title)
-{ draw(at2, title, false); }
-
-template<class T2>
-void draw(const T2& at2)
-{ draw(at2, "Basic T2 Viewer"); }
+#undef CGAL_T2_TYPE
 
 } // End namespace CGAL
 
