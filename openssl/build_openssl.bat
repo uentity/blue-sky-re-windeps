@@ -9,7 +9,8 @@ call %vcvars_path% x64 >> %log_path% 2>&1
 
 echo "Building x86_64 Release..."
 set bin_dir=%~dp0%~1\exe\x86_64_release
-perl Configure VC-WIN64A no-tests --prefix=%bin_dir% >> %log_path% 2>&1
+set config_dir=%bin_dir%\conf
+perl Configure VC-WIN64A no-tests --prefix=%bin_dir% --openssldir=%config_dir% >> %log_path% 2>&1
 nmake /f makefile clean >> %log_path% 2>&1
 nmake /f makefile /MP >> %log_path% 2>&1
 nmake /f makefile install >> %log_path% 2>&1
@@ -26,7 +27,8 @@ echo "Success"
 
 echo "Building x86_64 Debug..."
 set bin_dir=%~dp0%~1\exe\x86_64_debug
-perl Configure VC-WIN64A --debug no-tests --prefix=%bin_dir% >> %log_path% 2>&1
+set config_dir=%bin_dir%\conf
+perl Configure VC-WIN64A --debug no-tests --prefix=%bin_dir% --openssldir=%config_dir% >> %log_path% 2>&1
 nmake /f makefile clean >> %log_path% 2>&1
 nmake /f makefile /MP >> %log_path% 2>&1
 nmake /f makefile install >> %log_path% 2>&1
@@ -43,7 +45,8 @@ call %vcvars_path% x86 >> %log_path% 2>&1
 
 echo "Building x86 Release..."
 set bin_dir=%~dp0%~1\exe\x86_release
-perl Configure VC-WIN32 no-tests --prefix=%bin_dir% >> %log_path% 2>&1
+set config_dir=%bin_dir%\conf
+perl Configure VC-WIN32 no-tests --prefix=%bin_dir% --openssldir=%config_dir% >> %log_path% 2>&1
 nmake /f makefile clean >> %log_path% 2>&1
 nmake /f makefile /MP >> %log_path% 2>&1
 nmake /f makefile install >> %log_path% 2>&1
@@ -60,7 +63,8 @@ echo "Success"
 
 echo "Building x86 Debug..."
 set bin_dir=%~dp0%~1\exe\x86_debug
-perl Configure VC-WIN32 --debug no-tests --prefix=%bin_dir% >> %log_path% 2>&1
+set config_dir=%bin_dir%\conf
+perl Configure VC-WIN32 --debug no-tests --prefix=%bin_dir% --openssldir=%config_dir% >> %log_path% 2>&1
 nmake /f makefile clean >> %log_path% 2>&1
 nmake /f makefile /MP >> %log_path% 2>&1
 nmake /f makefile install >> %log_path% 2>&1
