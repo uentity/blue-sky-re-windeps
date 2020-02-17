@@ -11,7 +11,7 @@ HDF5: 1.10.4
 loki: 0.1.7
 OpenSSL: 1.1.1
 tbb: 2019_20181203oss
-CAF: 0.17.3
+CAF: 0.17.4
 ANN: 1.1
 freetype: 2.9.0
 Windows CRT: 10.0.17763.0
