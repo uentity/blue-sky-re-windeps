@@ -1,0 +1,6 @@
+[submodule "factory/openssl"]
+	path = factory/openssl
+	url = https://github.com/openssl/openssl.git
+[submodule "factory/curl"]
+	path = factory/curl
+	url = git@github.com:uentity/curl.git
