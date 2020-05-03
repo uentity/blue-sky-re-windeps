@@ -6,7 +6,7 @@ NOTE: because of huge size, Boost headers are NOT included. You need to place 'e
 Includes following components.
 Boost: 1.68
 CGAL: 5.0 (header-only)
-curl: 7.64.1 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundled OpenSSL)
+curl: 7.67.0 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundled OpenSSL)
 HDF5: 1.10.4
 OpenSSL: 1.1.1
 tbb: 2019_20181203oss
