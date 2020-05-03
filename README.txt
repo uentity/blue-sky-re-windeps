@@ -8,7 +8,6 @@ Boost: 1.68
 CGAL: 5.0 (header-only)
 curl: 7.64.1 modified (patched version from https://github.com/uentity/curl.git that supports NTLM auth with given password hashes, linked with bundled OpenSSL)
 HDF5: 1.10.4
-loki: 0.1.7
 OpenSSL: 1.1.1
 tbb: 2019_20181203oss
 CAF: 0.17.4
