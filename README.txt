@@ -10,8 +10,8 @@ curl: 7.67.0 modified (patched version from https://github.com/uentity/curl.git 
 HDF5: 1.10.4
 OpenSSL: 1.1.1
 tbb: 2019_20181203oss
-CAF: 0.17.4
+CAF: 0.17.5
 ANN: 1.1
 freetype: 2.9.0
 Windows CRT: 10.0.17763.0
-MSVC libs: 15.9.1
+MSVC libs: v16
