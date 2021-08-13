@@ -13,5 +13,5 @@ tbb: 2019_20181203oss
 CAF: 0.18.5
 ANN: 1.1
 freetype: 2.9.0
-Windows CRT: 10.0.18362.0
-MSVC libs: v16.8.2
+Windows CRT: 10.0.19041.0
+MSVC libs: v16.11.0
